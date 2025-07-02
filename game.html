@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Random Number Guessing Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: rgb(254, 211, 254);
+      padding: 50px;
+    }
+    h1 {
+      color:  rgb(0, 0, 0);
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    button{
+        border-radius: 15px;
+    }
+    input{
+        border-radius: 30px;
+    }
+    #message {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Guess the Number!</h1>
+  <p>I have selected a number between 1 and 100. Can you guess it?</p>
+  <p>You have only 10 tries!</p>
+  <input type="number" id="guess" placeholder="Enter your guess" />
+  <button onclick="checkGuess()">Submit</button>
+  <p id="attempt">Attempts left: 10</p>
+  <p id="message"></p>
+  <button onclick="restartGame()" id="bin">Restart Game</button>
+
+  <script>
+    let randomNumber = Math.floor(Math.random() * 100) + 1;
+    let left = 10;
+    function checkGuess() {
+      const userGuess = parseInt(document.getElementById("guess").value);
+      const message = document.getElementById("message");
+      const attempts = document.getElementById("attempt");
+
+      if (isNaN(userGuess) || userGuess < 1 || userGuess > 100) {
+        message.innerText = "Please enter a number between 1 and 100.";
+        return;
+      }
+      left--;
+      attempts.innerText="Attempts left: "+left;
+
+      if (userGuess === randomNumber) {
+        message.innerText = "Correct! You guessed the number!";
+        message.style.color = "green";
+      } 
+      else if(left===0){
+         message.innerText=`Game Over! The number was ${randomNumber}`
+         message.style.color="red";
+         endgame();
+      }
+      else{
+        if (userGuess < randomNumber) {
+        message.innerText = "Too low! Try again.";
+        message.style.color = "blue";
+      } else {
+        message.innerText = "Too high! Try again.";
+        message.style.color = "orange";
+      }}
+    }
+    function endgame(){
+        userGuess.disabled=true;
+       bin.style.display = "inline-block";
+    }
+
+    function restartGame() {
+      let left = 10;
+      randomNumber = Math.floor(Math.random() * 100) + 1;
+      userGuess.disabled=false;
+      document.getElementById("guess").value = "";
+      document.getElementById("message").innerText = "";
+      attempts.innerText="Attempts left: 10";
+    }
+  </script>
+
+</body>
+</html>
