@@ -6,8 +6,20 @@
     <title>Random number</title>
     <style>
         body{
-            background-color: rgb(254, 211, 254);
+            justify-content: center;
+            text-align: center;
+            background-color:#FF94B2;
             padding: 50px;
+        }
+        form{
+            margin: auto;
+            width: 600px;
+            padding: 30px;
+            text-align: center;
+            border-radius: 30px;
+            background-color: #fd6691;
+            border: 2px solid black;
+            box-shadow:  black;
         }
         h1{
             font-size: xx-large;
@@ -17,19 +29,19 @@
             padding: 10px;
             border: 2px solid black;
         }
+        .btn:hover{
+            cursor: pointer;
+            color: white;
+            background-color:  #253045;
+        }
         
     </style>
 </head>
 <body>
+    <form action="game.html" method="get">
     <h1 class="guess">GUESS THE NUMBER</h1>
     <h4>Between 1 to 100</h4>
-    <button action="game.html" method="get" class="btn">START</button>
-
-
-    
-
-    <script>
-
-    </script>
+    <button  class="btn">START</button>
+    </form>
 </body>
 </html>
