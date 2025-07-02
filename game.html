@@ -8,7 +8,7 @@
     body {
       font-family: Arial, sans-serif;
       text-align: center;
-      background-color: rgb(254, 211, 254);
+      background-color: #FF94B2;
       padding: 50px;
     }
     h1 {
@@ -25,11 +25,17 @@
     input{
         border-radius: 30px;
     }
+    button:hover{
+            cursor: pointer;
+            color: white;
+            background-color:  #253045;
+    }
     #message {
       margin-top: 20px;
       font-size: 18px;
       font-weight: bold;
     }
+   
   </style>
 </head>
 <body>
@@ -38,10 +44,10 @@
   <p>I have selected a number between 1 and 100. Can you guess it?</p>
   <p>You have only 10 tries!</p>
   <input type="number" id="guess" placeholder="Enter your guess" />
-  <button onclick="checkGuess()">Submit</button>
+  <button onclick="checkGuess()" class="submit">Submit</button>
   <p id="attempt">Attempts left: 10</p>
   <p id="message"></p>
-  <button onclick="restartGame()" id="bin">Restart Game</button>
+  <button onclick="restartGame()"  class="bin" id="bin">Restart Game</button>
 
   <script>
     let randomNumber = Math.floor(Math.random() * 100) + 1;
